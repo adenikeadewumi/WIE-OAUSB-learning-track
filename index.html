@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Code. Build. Design. — Track Curriculum</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF8F4;
+    --ink: #1A1410;
+    --wie-purple: #6B21A8;
+    --wie-purple-light: #9333EA;
+    --wie-purple-pale: #F3E8FF;
+    --wie-yellow: #E6B800;
+    --wie-red: #BA0C2F;
+    --wie-blue: #00629B;
+    --track-a: #6B21A8;
+    --track-b: #BA0C2F;
+    --track-c: #00629B;
+    --rule: #E5DDD5;
+    --muted: #7A6E66;
+    --surface: #FFFFFF;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.65; }
+
+  /* TOPBAR */
+  .wie-bar { background: var(--wie-purple); padding: 10px 60px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .wie-bar-left { display: flex; align-items: center; gap: 14px; }
+  .wie-diamond { width: 26px; height: 26px; background: var(--wie-yellow); transform: rotate(45deg); flex-shrink: 0; }
+  .wie-bar-text { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.9); }
+  .wie-bar-right { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--wie-yellow); letter-spacing: 0.12em; text-transform: uppercase; }
+
+  /* HERO */
+  .hero { padding: 70px 60px 60px; border-bottom: 1px solid var(--rule); position: relative; overflow: hidden; background: linear-gradient(135deg, #FAF8F4 55%, #F3E8FF 100%); }
+  .hero::after { content: ''; position: absolute; top: -40px; right: -80px; width: 360px; height: 360px; background: radial-gradient(circle, rgba(107,33,168,0.07) 0%, transparent 70%); pointer-events: none; }
+  .hero-eyebrow { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--wie-purple); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .hero-eyebrow::before { content: ''; display: inline-block; width: 28px; height: 2px; background: var(--wie-yellow); }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(36px, 6vw, 66px); font-weight: 900; line-height: 1.06; max-width: 680px; margin-bottom: 12px; }
+  .hero h1 span { color: var(--wie-purple); font-style: italic; font-weight: 700; }
+  .hero-sub { font-size: 15px; color: var(--muted); max-width: 500px; margin-bottom: 32px; }
+  .hero-pills { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 32px; }
+  .pill { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 14px; background: var(--surface); border: 1px solid var(--rule); color: var(--ink); }
+  .pill.accent { background: var(--wie-purple); color: white; border-color: var(--wie-purple); }
+  .hero-cta { display: inline-flex; align-items: center; gap: 10px; background: var(--wie-yellow); color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; padding: 14px 28px; text-decoration: none; letter-spacing: 0.02em; transition: transform 0.15s, box-shadow 0.15s; border: none; cursor: pointer; }
+  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(107,33,168,0.2); }
+
+  /* CERTS */
+  .cert-section { padding: 50px 60px; background: var(--ink); color: var(--cream); position: relative; overflow: hidden; border-bottom: 1px solid var(--rule); }
+  .cert-section::before { content: ''; position: absolute; bottom: -60px; right: -60px; width: 200px; height: 200px; border: 1px solid rgba(255,209,0,0.12); transform: rotate(45deg); pointer-events: none; }
+  .cert-section h2 { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--wie-yellow); margin-bottom: 28px; }
+  .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .cert-card { border: 1px solid rgba(255,255,255,0.07); padding: 24px; background: rgba(255,255,255,0.03); position: relative; }
+  .cert-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; }
+  .cert-card.a::before { background: #C084FC; }
+  .cert-card.b::before { background: #F87171; }
+  .cert-card.c::before { background: #60A5FA; }
+  .cert-card h3 { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(250,248,244,0.3); margin-bottom: 10px; }
+  .cert-name { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; line-height: 1.3; }
+  .cert-card.a .cert-name { color: #E9D5FF; }
+  .cert-card.b .cert-name { color: #FEE2E2; }
+  .cert-card.c .cert-name { color: #DBEAFE; }
+
+  /* TRACKS */
+  .tracks-container { padding: 60px; }
+  .tracks-header { margin-bottom: 52px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px; padding-bottom: 24px; border-bottom: 1px solid var(--rule); }
+  .tracks-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(22px, 4vw, 38px); font-weight: 700; }
+  .tracks-header p { font-size: 13px; color: var(--muted); max-width: 300px; text-align: right; }
+  .track { margin-bottom: 72px; }
+  .track-header { display: grid; grid-template-columns: 80px 1fr; gap: 20px; align-items: start; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 2px solid; }
+  .track-a .track-header { border-color: var(--track-a); }
+  .track-b .track-header { border-color: var(--track-b); }
+  .track-c .track-header { border-color: var(--track-c); }
+  .track-letter { font-family: 'Playfair Display', serif; font-size: 78px; font-weight: 900; line-height: 1; }
+  .track-a .track-letter { color: var(--track-a); }
+  .track-b .track-letter { color: var(--track-b); }
+  .track-c .track-letter { color: var(--track-c); }
+  .track-title-block h3 { font-family: 'Playfair Display', serif; font-size: clamp(19px, 2.8vw, 27px); font-weight: 700; margin-bottom: 5px; }
+  .track-tagline { font-size: 13px; color: var(--muted); font-style: italic; margin-bottom: 12px; }
+  .track-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+  .badge { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border: 1px solid currentColor; }
+  .track-a .badge { color: var(--track-a); }
+  .track-b .badge { color: var(--track-b); }
+  .track-c .badge { color: var(--track-c); }
+  .sessions { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+  .session { border: 1px solid var(--rule); padding: 22px; background: var(--surface); transition: box-shadow 0.2s; position: relative; }
+  .session:hover { box-shadow: 3px 3px 0 var(--rule); }
+  .session::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; }
+  .track-a .session::before { background: var(--track-a); }
+  .track-b .session::before { background: var(--track-b); }
+  .track-c .session::before { background: var(--track-c); }
+  .session-day { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  .session h4 { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; margin-bottom: 12px; line-height: 1.25; }
+  .session-topics { list-style: none; }
+  .session-topics li { font-size: 12.5px; color: var(--muted); padding: 4px 0; border-bottom: 1px dashed var(--rule); display: flex; gap: 8px; align-items: flex-start; }
+  .session-topics li:last-child { border-bottom: none; }
+  .session-topics li::before { content: '→'; font-size: 10px; flex-shrink: 0; margin-top: 3px; }
+  .track-a .session-topics li::before { color: var(--track-a); }
+  .track-b .session-topics li::before { color: var(--track-b); }
+  .track-c .session-topics li::before { color: var(--track-c); }
+  .session-outcome { margin-top: 12px; padding: 9px 11px; font-size: 11.5px; font-style: italic; background: rgba(26,20,16,0.03); border-left: 2px solid; line-height: 1.4; }
+  .track-a .session-outcome { border-color: var(--track-a); color: var(--track-a); }
+  .track-b .session-outcome { border-color: var(--track-b); color: var(--track-b); }
+  .track-c .session-outcome { border-color: var(--track-c); color: var(--track-c); }
+
+  /* FOOTER */
+  .footer { background: var(--ink); padding: 32px 60px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .footer-left { font-family: 'DM Mono', monospace; font-size: 10px; color: rgba(250,248,244,0.3); letter-spacing: 0.12em; text-transform: uppercase; }
+  .footer-right { font-family: 'Playfair Display', serif; font-size: 13px; font-style: italic; color: var(--wie-yellow); }
+
+  @media (max-width: 680px) {
+    .wie-bar, .hero, .cert-section, .tracks-container, .cta-section, .footer { padding-left: 24px; padding-right: 24px; }
+    .track-header { grid-template-columns: 58px 1fr; }
+    .track-letter { font-size: 54px; }
+    .tracks-header p { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="wie-bar">
+  <div class="wie-bar-left">
+    <div class="wie-diamond"></div>
+    <span class="wie-bar-text">IEEE Women in Engineering · OAU Student Branch</span>
+  </div>
+  <span class="wie-bar-right">Code. Build. Design. · 2026</span>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">Full Curriculum · Three Tracks · Four Saturdays</p>
+  <h1>Code. Build.<br><span>Design.</span></h1>
+  <p class="hero-sub">Three parallel tracks. Four Saturdays. Real skills, real projects, and a certificate that means something. Pick your path below and see exactly what you'll learn.</p>
+  <div class="hero-pills">
+    <span class="pill accent">3 Parallel Tracks</span>
+    <span class="pill">4 Saturdays</span>
+    <span class="pill">All Engineering Disciplines</span>
+    <span class="pill">Certificate on Completion</span>
+  </div>
+  <a href="YOUR_LUMA_LINK_HERE" target="_blank" class="hero-cta">Register on Luma ↗</a>
+</section>
+
+<!-- CERT NAMES -->
+<section class="cert-section">
+  <h2>Certificates Awarded on Completion</h2>
+  <div class="cert-grid">
+    <div class="cert-card a">
+      <h3>Track A</h3>
+      <div class="cert-name">Certificate of Completion in<br>AI & Software Engineering</div>
+    </div>
+    <div class="cert-card b">
+      <h3>Track B</h3>
+      <div class="cert-name">Certificate of Completion in<br>Robotics & Embedded Systems</div>
+    </div>
+    <div class="cert-card c">
+      <h3>Track C</h3>
+      <div class="cert-name">Certificate of Completion in<br>Engineering Design & CAD</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRACKS -->
+<div class="tracks-container">
+  <div class="tracks-header">
+    <h2>Four-Saturday Curriculum</h2>
+    <p>Participants commit to one track. Each session builds on the last.</p>
+  </div>
+
+  <!-- TRACK A -->
+  <div class="track track-a">
+    <div class="track-header">
+      <div class="track-letter">A</div>
+      <div class="track-title-block">
+        <h3>AI & Software Engineering</h3>
+        <p class="track-tagline">From zero code to a working intelligent system</p>
+        <div class="track-badges">
+          <span class="badge">Beginner – Intermediate</span>
+          <span class="badge">Laptop Required</span>
+          <span class="badge">Google Colab</span>
+        </div>
+      </div>
+    </div>
+    <div class="sessions">
+      <div class="session">
+        <div class="session-day">Saturday 1</div>
+        <h4>Python Fundamentals & Data Thinking</h4>
+        <ul class="session-topics">
+          <li>Python setup via Google Colab — no installs needed</li>
+          <li>Variables, loops, functions — practical syntax</li>
+          <li>Intro to pandas: loading & exploring a real dataset</li>
+          <li>Data visualisation with matplotlib</li>
+          <li>Mini challenge: clean a messy Nigerian market dataset</li>
+        </ul>
+        <div class="session-outcome">✦ Leave able to write and run Python scripts independently</div>
+      </div>
+      <div class="session">
+        <div class="session-day">Saturday 2</div>
+        <h4>Machine Learning Without the Math</h4>
+        <ul class="session-topics">
+          <li>What is ML? Supervised vs unsupervised — plain language</li>
+          <li>Train an image classifier with Teachable Machine</li>
+          <li>Intro to scikit-learn: a simple classification pipeline</li>
+          <li>African use cases: crop disease, fraud, health triage</li>
+          <li>Model evaluation: accuracy and confusion matrix</li>
+        </ul>
+        <div class="session-outcome">✦ Train and evaluate your first ML model</div>
+      </div>
+      <div class="session">
+        <div class="session-day">Saturday 3</div>
+        <h4>NLP & Prompt Engineering</h4>
+        <ul class="session-topics">
+          <li>How large language models work — conceptual overview</li>
+          <li>Prompt engineering: zero-shot, few-shot, chain-of-thought</li>
+          <li>Calling an AI API with Python (live demo)</li>
+          <li>Build a simple AI-powered tool: Q&A bot or summariser</li>
+          <li>Ethics and bias in AI systems</li>
+        </ul>
+        <div class="session-outcome">✦ Build and run a simple AI-powered application</div>
+      </div>
+      <div class="session">
+        <div class="session-day">Saturday 4 — Capstone</div>
+        <h4>Build & Pitch</h4>
+        <ul class="session-topics">
+          <li>Teams define a real problem — campus, community, industry</li>
+          <li>Prototype: an ML model or AI-powered script</li>
+          <li>Present to a panel — 5 minutes + Q&A</li>
+          <li>Prizes for top projects</li>
+          <li>Certificate presentation</li>
+        </ul>
+        <div class="session-outcome">✦ Present a working AI prototype to a live panel</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRACK B -->
+  <div class="track track-b">
+    <div class="track-header">
+      <div class="track-letter">B</div>
+      <div class="track-title-block">
+        <h3>Robotics & Embedded Systems</h3>
+        <p class="track-tagline">Hardware comes alive — build things that move and sense</p>
+        <div class="track-badges">
+          <span class="badge">All Levels</span>
+          <span class="badge">Arduino + Raspberry Pi</span>
+          <span class="badge">Quanser on S4</span>
+        </div>
+      </div>
+    </div>
+    <div class="sessions">
+      <div class="session">
+        <div class="session-day">Saturday 1</div>
+        <h4>Electronics Foundations & Arduino</h4>
+        <ul class="session-topics">
+          <li>Circuit basics: voltage, current, resistance — hands-on</li>
+          <li>Arduino IDE setup and first sketch (Blink)</li>
+          <li>Digital & analog I/O: LEDs, buttons, potentiometers</li>
+          <li>Sensors: ultrasonic distance, temperature (DHT11)</li>
+          <li>Challenge: build a proximity alarm</li>
+        </ul>
+        <div class="session-outcome">✦ Wire and program a sensor-driven Arduino circuit</div>
+      </div>
+      <div class="session">
+        <div class="session-day">Saturday 2</div>
+        <h4>Microcontrollers & Actuator Control</h4>
+        <ul class="session-topics">
+          <li>Servo & DC motor control with PWM signals</li>
+          <li>Intro to Raspberry Pi: GPIO and Linux terminal basics</li>
+          <li>Serial communication between Arduino and Pi</li>
+          <li>Camera module: capturing frames with OpenCV</li>
+          <li>Mini build: camera-triggered motor response</li>
+        </ul>
+        <div class="session-outcome">✦ Control a motor or servo from a Raspberry Pi script</div>
+      </div>
+      <div class="session">
+        <div class="session-day">Saturday 3</div>
+        <h4>Computer Vision for Robotics</h4>
+        <ul class="session-topics">
+          <li>OpenCV fundamentals: colour filtering and contours</li>
+          <li>Object detection with YOLOv8n on Raspberry Pi</li>
+          <li>Coordinate mapping: pixel space to world coordinates</li>
+          <li>Integrating detection output with motor control logic</li>
+          <li>Live demo: vision pipeline triggering an actuator</li>
+        </ul>
+        <div class="session-outcome">✦ Run a vision pipeline that triggers a physical response</div>
+      </div>
+      <div class="session">
+        <div class="session-day">Saturday 4 — Capstone</div>
+        <h4>Quanser Demo & Final Build</h4>
+        <ul class="session-topics">
+          <li>Intro to Quanser: industry-grade control systems</li>
+          <li>Guided demo: balance or position control on Quanser hardware</li>
+          <li>Teams present their S1–S3 build project</li>
+          <li>Panel feedback and awards</li>
+          <li>Certificate presentation</li>
+        </ul>
+        <div class="session-outcome">✦ Interact with industry hardware and present a build</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRACK C -->
+  <div class="track track-c">
+    <div class="track-header">
+      <div class="track-letter">C</div>
+      <div class="track-title-block">
+        <h3>Engineering Design & CAD</h3>
+        <p class="track-tagline">From sketch to technical drawing — precision meets design thinking</p>
+        <div class="track-badges">
+          <span class="badge">All Disciplines</span>
+          <span class="badge">AutoCAD + Fusion 360</span>
+          <span class="badge">CV-Ready Skill</span>
+        </div>
+      </div>
+    </div>
+    <div class="sessions">
+      <div class="session">
+        <div class="session-day">Saturday 1</div>
+        <h4>Engineering Drawing Principles</h4>
+        <ul class="session-topics">
+          <li>Why technical drawing matters: industry & communication</li>
+          <li>Orthographic projection: front, top, side views</li>
+          <li>Dimensioning standards and title blocks</li>
+          <li>Hand sketching: 2D shapes to 3D objects</li>
+          <li>Introduction to AutoCAD interface and navigation</li>
+        </ul>
+        <div class="session-outcome">✦ Produce a correctly dimensioned 2D orthographic drawing</div>
+      </div>
+      <div class="session">
+        <div class="session-day">Saturday 2</div>
+        <h4>2D Drafting in AutoCAD</h4>
+        <ul class="session-topics">
+          <li>Draw, modify, and annotate tools in AutoCAD</li>
+          <li>Layers, line types, and drawing standards</li>
+          <li>Precision drawing: snap, grid, object tracking</li>
+          <li>Floor plan or mechanical part exercise</li>
+          <li>Printing to scale: layouts and viewports</li>
+        </ul>
+        <div class="session-outcome">✦ Produce a print-ready technical drawing in AutoCAD</div>
+      </div>
+      <div class="session">
+        <div class="session-day">Saturday 3</div>
+        <h4>3D Modelling in Fusion 360</h4>
+        <ul class="session-topics">
+          <li>Fusion 360 setup — free student licence</li>
+          <li>Sketch → Extrude → 3D solid modelling workflow</li>
+          <li>Fillets, chamfers, holes, and assembly basics</li>
+          <li>Rendering and visual presentation</li>
+          <li>Export for fabrication: STL and DXF formats</li>
+        </ul>
+        <div class="session-outcome">✦ Model a functional 3D component ready for fabrication</div>
+      </div>
+      <div class="session">
+        <div class="session-day">Saturday 4 — Capstone</div>
+        <h4>Design Challenge & Presentation</h4>
+        <ul class="session-topics">
+          <li>Teams receive a design brief — bridge, bracket, or component</li>
+          <li>Full pipeline: sketch → 2D drawing → 3D model</li>
+          <li>Present design rationale and drawings to panel</li>
+          <li>Judged on accuracy, clarity, and design thinking</li>
+          <li>Certificate presentation</li>
+        </ul>
+        <div class="session-outcome">✦ Deliver a complete design package from brief to 3D model</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REGISTER CTA -->
+<section class="cta-section" style="padding: 60px; background: linear-gradient(150deg, var(--wie-purple) 0%, #3B0764 100%); position: relative; overflow: hidden;">
+  <div style="position:absolute;top:-80px;right:-80px;width:280px;height:280px;border:1px solid rgba(232,160,32,0.12);transform:rotate(45deg);pointer-events:none;"></div>
+  <p style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--wie-yellow);margin-bottom:12px;display:flex;align-items:center;gap:10px;">
+    <span style="display:inline-block;width:24px;height:2px;background:var(--wie-yellow);"></span>
+    Registration
+  </p>
+  <h2 style="font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,40px);font-weight:900;color:white;line-height:1.1;margin-bottom:12px;">Ready to join?</h2>
+  <p style="font-size:14px;color:rgba(255,255,255,0.55);max-width:440px;margin-bottom:28px;">Spots are limited per track. Head to Luma to register and secure your place across all four Saturdays.</p>
+  <a href="YOUR_LUMA_LINK_HERE" target="_blank" class="hero-cta" style="display:inline-flex;">Register on Luma ↗</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-left">Code. Build. Design. · 2026 · IEEE Women in Engineering</div>
+  <div class="footer-right">Empowering the next generation of engineers</div>
+</footer>
+
+</body>
+</html>
+
