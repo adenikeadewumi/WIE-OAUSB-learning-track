@@ -7,7 +7,7 @@ Official curriculum and registration landing page for **IEEE Women in Engineerin
 ## About This Project
  
 This is a single-file HTML landing page built to:
-- Communicate the three parallel learning tracks for WIE Week 2026
+- Communicate the three parallel learning tracks organized for WIE OAUSB students
 - Display the four-Saturday curriculum for each track
 - Show certificate titles awarded on completion
 - Direct participants to register via Luma
