@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
 <title>Code. Build. Design. — Track Curriculum</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -29,7 +30,13 @@
   /* TOPBAR */
   .wie-bar { background: var(--wie-purple); padding: 10px 60px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
   .wie-bar-left { display: flex; align-items: center; gap: 14px; }
-  .wie-diamond { width: 26px; height: 26px; background: var(--wie-yellow); transform: rotate(45deg); flex-shrink: 0; }
+  .wie-logo {
+  width: 32px;         /* Adjust size to fit your bar height */
+  height: auto;        /* Maintains aspect ratio */
+  flex-shrink: 0;
+  margin-right: 10px;  /* Adds some breathing room before the text */
+  display: block;
+  }
   .wie-bar-text { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.9); }
   .wie-bar-right { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--wie-yellow); letter-spacing: 0.12em; text-transform: uppercase; }
 
@@ -123,7 +130,7 @@
 <!-- TOPBAR -->
 <div class="wie-bar">
   <div class="wie-bar-left">
-    <div class="wie-diamond"></div>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/IEEE_logo.svg" alt="IEEE Logo" class="wie-logo">
     <span class="wie-bar-text">IEEE Women in Engineering · OAU Student Branch</span>
   </div>
   <span class="wie-bar-right">Code. Build. Design. · 2026</span>
