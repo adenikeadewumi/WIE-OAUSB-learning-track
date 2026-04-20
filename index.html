@@ -31,10 +31,10 @@
   .wie-bar { background: var(--wie-purple); padding: 10px 60px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
   .wie-bar-left { display: flex; align-items: center; gap: 14px; }
   .wie-logo {
-  height: 40px;          /* Or whatever size fits your bar */
-  width: 40px;
-  border-radius: 50%;    /* This turns the square image into a circle */
-  object-fit: cover;     /* Ensures the logo doesn't stretch */
+  width: 32px;         /* Adjust size to fit your bar height */
+  height: auto;        /* Maintains aspect ratio */
+  flex-shrink: 0;
+  margin-right: 10px;  /* Adds some breathing room before the text */
   display: block;
   }
   .wie-bar-text { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.9); }
