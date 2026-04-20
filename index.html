@@ -10,7 +10,7 @@
   :root {
     --cream: #FAF8F4;
     --ink: #1A1410;
-    --wie-purple: #6B21A8;
+    --wie-purple: #981D97;
     --wie-purple-light: #9333EA;
     --wie-purple-pale: #F3E8FF;
     --wie-yellow: #E6B800;
@@ -31,12 +31,11 @@
   .wie-bar { background: var(--wie-purple); padding: 10px 60px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
   .wie-bar-left { display: flex; align-items: center; gap: 14px; }
   .wie-logo {
-  width: 32px;         /* Adjust size to fit your bar height */
-  height: auto;        /* Maintains aspect ratio */
-  flex-shrink: 0;
-  margin-right: 10px;  /* Adds some breathing room before the text */
+  height: 40px;          /* Or whatever size fits your bar */
+  width: 40px;
+  border-radius: 50%;    /* This turns the square image into a circle */
+  object-fit: cover;     /* Ensures the logo doesn't stretch */
   display: block;
-  filter: brightness(0) invert(1);
   }
   .wie-bar-text { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.9); }
   .wie-bar-right { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--wie-yellow); letter-spacing: 0.12em; text-transform: uppercase; }
