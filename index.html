@@ -249,7 +249,7 @@
     <div class="track-header">
       <div class="track-letter">B</div>
       <div class="track-title-block">
-        <h3>Robotics & Embedded Systems</h3>
+        <h3>Robotics & UAVs/h3>
         <p class="track-tagline">Hardware comes alive — build things that move and sense</p>
         <div class="track-badges">
           <span class="badge">All Levels</span>
@@ -310,69 +310,83 @@
     </div>
   </div>
 
-  <!-- TRACK C -->
-  <div class="track track-c">
-    <div class="track-header">
-      <div class="track-letter">C</div>
-      <div class="track-title-block">
-        <h3>Engineering Design & CAD</h3>
-        <p class="track-tagline">From sketch to technical drawing — precision meets design thinking</p>
-        <div class="track-badges">
-          <span class="badge">All Disciplines</span>
-          <span class="badge">AutoCAD + Fusion 360</span>
-          <span class="badge">CV-Ready Skill</span>
-        </div>
+<!-- TRACK B -->
+<div class="track track-b">
+  <div class="track-header">
+    <div class="track-letter">B</div>
+    <div class="track-title-block">
+      <h3>Robotics & UAVs</h3>
+      <p class="track-tagline">From control theory to autonomous systems — powered entirely by Quanser</p>
+      <div class="track-badges">
+        <span class="badge">All Levels</span>
+        <span class="badge">Quanser Hardware</span>
+        <span class="badge">QLabs</span>
+        <span class="badge">UAV & Autonomous Systems</span>
       </div>
     </div>
-    <div class="sessions">
-      <div class="session">
-        <div class="session-day">Saturday 1</div>
-        <h4>Engineering Drawing Principles</h4>
-        <ul class="session-topics">
-          <li>Why technical drawing matters: industry & communication</li>
-          <li>Orthographic projection: front, top, side views</li>
-          <li>Dimensioning standards and title blocks</li>
-          <li>Hand sketching: 2D shapes to 3D objects</li>
-          <li>Introduction to AutoCAD interface and navigation</li>
-        </ul>
-        <div class="session-outcome">✦ Produce a correctly dimensioned 2D orthographic drawing</div>
-      </div>
-      <div class="session">
-        <div class="session-day">Saturday 2</div>
-        <h4>2D Drafting in AutoCAD</h4>
-        <ul class="session-topics">
-          <li>Draw, modify, and annotate tools in AutoCAD</li>
-          <li>Layers, line types, and drawing standards</li>
-          <li>Precision drawing: snap, grid, object tracking</li>
-          <li>Floor plan or mechanical part exercise</li>
-          <li>Printing to scale: layouts and viewports</li>
-        </ul>
-        <div class="session-outcome">✦ Produce a print-ready technical drawing in AutoCAD</div>
-      </div>
-      <div class="session">
-        <div class="session-day">Saturday 3</div>
-        <h4>3D Modelling in Fusion 360</h4>
-        <ul class="session-topics">
-          <li>Fusion 360 setup — free student licence</li>
-          <li>Sketch → Extrude → 3D solid modelling workflow</li>
-          <li>Fillets, chamfers, holes, and assembly basics</li>
-          <li>Rendering and visual presentation</li>
-          <li>Export for fabrication: STL and DXF formats</li>
-        </ul>
-        <div class="session-outcome">✦ Model a functional 3D component ready for fabrication</div>
-      </div>
-      <div class="session">
-        <div class="session-day">Saturday 4 — Capstone</div>
-        <h4>Design Challenge & Presentation</h4>
-        <ul class="session-topics">
-          <li>Teams receive a design brief — bridge, bracket, or component</li>
-          <li>Full pipeline: sketch → 2D drawing → 3D model</li>
-          <li>Present design rationale and drawings to panel</li>
-          <li>Judged on accuracy, clarity, and design thinking</li>
-          <li>Certificate presentation</li>
-        </ul>
-        <div class="session-outcome">✦ Deliver a complete design package from brief to 3D model</div>
-      </div>
+  </div>
+  <div class="sessions">
+    <div class="session">
+      <div class="session-day">Saturday 1</div>
+      <h4>Introduction to Quanser & Control Theory Foundations</h4>
+      <ul class="session-topics">
+        <li>What is a control system? Open-loop vs closed-loop with real examples</li>
+        <li>Key concepts: plant, controller, feedback, setpoint, error signal</li>
+        <li>Intro to Quanser hardware ecosystem — what each system teaches</li>
+        <li>Sensors fundamentals: encoders, potentiometers, tachometers</li>
+        <li>Actuator fundamentals: servo motors and PWM control</li>
+        <li>Hands-on: command a servo motor and read real-time position feedback</li>
+        <li>QUARC / Quanser Interactive Labs (QLabs) software environment setup</li>
+        <li>Safety protocols when working with Quanser hardware</li>
+      </ul>
+      <div class="session-outcome">✦ Understand control system fundamentals and command a servo motor with real-time feedback</div>
+    </div>
+    <div class="session">
+      <div class="session-day">Saturday 2</div>
+      <h4>Quanser Aero & Robotic Arm</h4>
+      <ul class="session-topics">
+        <li>Quanser Aero anatomy: propellers, encoders, gyroscopes, and IMU</li>
+        <li>How thrust is generated and measured — actuator theory meets real hardware</li>
+        <li>Pitch and yaw control: implementing a basic PID controller</li>
+        <li>Reading live sensor data: angular position, velocity, and acceleration</li>
+        <li>Hands-on: stabilise the Aero at a commanded angle using feedback control</li>
+        <li>Quanser Rotary Arm anatomy: degrees of freedom and gear ratios</li>
+        <li>Forward kinematics: how joint angles map to end-effector position</li>
+        <li>Hands-on: command the arm to reach and hold target positions</li>
+      </ul>
+      <div class="session-outcome">✦ Implement feedback control on two Quanser systems and read live sensor data in real time</div>
+    </div>
+    <div class="session">
+      <div class="session-day">Saturday 3</div>
+      <h4>Quanser QCar & Autonomous Ground Systems</h4>
+      <ul class="session-topics">
+        <li>What makes a system autonomous? The sense → think → act loop</li>
+        <li>QCar anatomy: drive motors, steering servo, camera, LiDAR, IMU, onboard computer</li>
+        <li>Intro to ROS (Robot Operating System) — nodes, topics, and industry relevance</li>
+        <li>Perception: processing camera and LiDAR data to understand the environment</li>
+        <li>Path planning basics: how a robot decides where to go</li>
+        <li>Lane following: implementing a vision-based controller on the QCar</li>
+        <li>Obstacle detection and reactive avoidance using LiDAR data</li>
+        <li>Hands-on: program the QCar to navigate a course autonomously</li>
+      </ul>
+      <div class="session-outcome">✦ Program an autonomous ground vehicle to perceive its environment and navigate independently</div>
+    </div>
+    <div class="session">
+      <div class="session-day">Saturday 4 — Capstone</div>
+      <h4>Quanser Qdrone & UAV Capstone</h4>
+      <ul class="session-topics">
+        <li>UAV anatomy: frame, flight controller, ESC, propellers, GPS, IMU, barometer</li>
+        <li>How quadrotors fly: thrust, torque, and the physics of stable hover</li>
+        <li>Sensor fusion: IMU + barometer + GPS working together for stable flight</li>
+        <li>Quanser Qdrone hardware walkthrough and safety briefing</li>
+        <li>Implementing attitude control: roll, pitch, and yaw stabilisation</li>
+        <li>Altitude hold: using barometer feedback to maintain height</li>
+        <li>Hands-on: guided drone demo — hover, translate, and land autonomously</li>
+        <li>Nigerian NCAA drone regulations — a brief awareness overview</li>
+        <li>Teams present their most significant build or control achievement from S1–S3</li>
+        <li>Panel feedback, prizes, and certificate presentation</li>
+      </ul>
+      <div class="session-outcome">✦ Understand UAV flight dynamics, fly a Quanser drone, and present a complete robotics project</div>
     </div>
   </div>
 </div>
